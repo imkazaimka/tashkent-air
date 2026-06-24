@@ -1,0 +1,102 @@
+{
+  "table7_with_precision": {
+    "raw_cams": {
+      "MAE": 23.4,
+      "RMSE": 36.0,
+      "R2": -0.16,
+      "precision35": 0.857,
+      "recall35": 0.165
+    },
+    "rescaled": {
+      "MAE": 20.0,
+      "RMSE": 26.8,
+      "R2": 0.36,
+      "precision35": 0.683,
+      "recall35": 0.771
+    },
+    "persistence": {
+      "MAE": 16.3,
+      "RMSE": 26.0,
+      "R2": 0.4,
+      "precision35": 0.771,
+      "recall35": 0.764
+    },
+    "calibrated": {
+      "MAE": 17.2,
+      "RMSE": 26.4,
+      "R2": 0.38,
+      "precision35": 0.773,
+      "recall35": 0.78
+    }
+  },
+  "winter_cv": {
+    "folds": [
+      {
+        "winter": "2022-2023",
+        "n": 102,
+        "R2": 0.38,
+        "precision35": 0.747,
+        "recall35": 0.937
+      },
+      {
+        "winter": "2023-2024",
+        "n": 134,
+        "R2": 0.02,
+        "precision35": 0.833,
+        "recall35": 0.747
+      },
+      {
+        "winter": "2024-2025",
+        "n": 113,
+        "R2": 0.12,
+        "precision35": 0.808,
+        "recall35": 0.909
+      }
+    ],
+    "R2_mean": 0.17,
+    "R2_sd": 0.15,
+    "recall_mean": 0.86,
+    "recall_sd": 0.08,
+    "precision_mean": 0.8,
+    "precision_sd": 0.04
+  },
+  "classifier35_ap": 0.849,
+  "driver_importance_ci": {
+    "regional": {
+      "mean": 56.0,
+      "lo": 47.0,
+      "hi": 64.0
+    },
+    "dispersion": {
+      "mean": 21.0,
+      "lo": 14.0,
+      "hi": 26.0
+    },
+    "thermal_season": {
+      "mean": 16.0,
+      "lo": 10.0,
+      "hi": 23.0
+    },
+    "precip": {
+      "mean": 7.0,
+      "lo": 3.0,
+      "hi": 10.0
+    },
+    "wind_vec": {
+      "mean": 2.0,
+      "lo": 1.0,
+      "hi": 2.0
+    }
+  },
+  "ml_wins": {
+    "ensemble": {
+      "r2": 0.53,
+      "precision": 0.782,
+      "recall": 0.811
+    },
+    "quantile80": {
+      "precision": 0.774,
+      "recall": 0.817
+    }
+  }
+}

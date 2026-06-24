@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+statsmodels
+shap
+scipy
+matplotlib
+requests
+python-dotenv
+pypdf

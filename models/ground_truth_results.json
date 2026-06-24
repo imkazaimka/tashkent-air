@@ -1,0 +1,49 @@
+{
+  "agreement": {
+    "n": 767,
+    "mean_cams": 18.760739895697522,
+    "mean_ground": 40.35349413298565,
+    "bias": -21.59275423728813,
+    "pearson_r": 0.5735768511946094,
+    "spearman_r": 0.5230157684002773,
+    "rmse": 38.4083619063822,
+    "ground_vs_cams_slope": 1.986730687793829,
+    "ground_vs_cams_intercept": 3.0809564564853815,
+    "r2": 0.3289904042263234,
+    "ground_exceed_days": 285,
+    "cams_exceed_days": 59,
+    "cams_recall": 0.18596491228070175
+  },
+  "H_A_ground": {
+    "Fergana": {
+      "beta": 4.240799603128561,
+      "placebo_p": 0.076
+    },
+    "Almaty": {
+      "beta": 10.746937450917283,
+      "placebo_p": 0.0
+    },
+    "Bishkek": {
+      "beta": 4.266715693568997,
+      "placebo_p": 0.068
+    },
+    "Samarkand": {
+      "beta": -8.966809423830613,
+      "placebo_p": 0.008
+    },
+    "Ashgabat": {
+      "beta": -6.703992118466761,
+      "placebo_p": 0.014
+    }
+  },
+  "H_B_ground": {
+    "raw_lin": -22.011946030262415,
+    "raw_lin_p": 1.0419192165653028e-41,
+    "raw_quad": 11.338644976171075,
+    "raw_quad_p": 2.692481909953462e-11,
+    "vent_ctrl_lin": -2.1174704725697056,
+    "vent_ctrl_lin_p": 0.18784936614431247,
+    "hot_tail_slope": 0.3033594790701011,
+    "hot_tail_p": 0.24793460782896246
+  }
+}

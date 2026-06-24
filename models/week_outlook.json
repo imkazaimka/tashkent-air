@@ -1,0 +1,65 @@
+[
+  {
+    "day": 1,
+    "date": "2026-06-25",
+    "pm25": 15.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.04,
+    "p_vbad": 0.0
+  },
+  {
+    "day": 2,
+    "date": "2026-06-26",
+    "pm25": 19.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.1,
+    "p_vbad": 0.0
+  },
+  {
+    "day": 3,
+    "date": "2026-06-27",
+    "pm25": 14.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.02,
+    "p_vbad": 0.0
+  },
+  {
+    "day": 4,
+    "date": "2026-06-28",
+    "pm25": 26.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.25,
+    "p_vbad": 0.03
+  },
+  {
+    "day": 5,
+    "date": "2026-06-29",
+    "pm25": 37.0,
+    "level": "USG",
+    "color": "#e67e22",
+    "p_bad": 0.47,
+    "p_vbad": 0.08
+  },
+  {
+    "day": 6,
+    "date": "2026-06-30",
+    "pm25": 26.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.27,
+    "p_vbad": 0.05
+  },
+  {
+    "day": 7,
+    "date": "2026-07-01",
+    "pm25": 22.0,
+    "level": "Moderate",
+    "color": "#f1c40f",
+    "p_bad": 0.18,
+    "p_vbad": 0.02
+  }
+]

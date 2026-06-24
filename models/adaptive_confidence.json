@@ -1,0 +1,30 @@
+{
+  "coverage": 0.73,
+  "half_p10": 9.5,
+  "half_med": 14.4,
+  "half_p90": 31.1,
+  "corr_width_error": 0.5,
+  "corr_novelty_error": -0.09,
+  "by_quartile": {
+    "narrow (confident)": {
+      "half": 9.5,
+      "mae": 7.5,
+      "cov": 0.81
+    },
+    "q2": {
+      "half": 11.4,
+      "mae": 7.7,
+      "cov": 0.86
+    },
+    "q3": {
+      "half": 18.9,
+      "mae": 20.5,
+      "cov": 0.62
+    },
+    "wide (unsure)": {
+      "half": 30.5,
+      "mae": 30.9,
+      "cov": 0.62
+    }
+  }
+}

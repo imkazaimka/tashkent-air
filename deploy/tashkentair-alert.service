@@ -1,0 +1,10 @@
+[Unit]
+Description=Tashkent air-quality — daily forecast + danger alert
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=YOURUSER
+WorkingDirectory=/home/YOURUSER/TashkentAir
+ExecStart=/home/YOURUSER/TashkentAir/.venv/bin/python src/telegram_alert.py

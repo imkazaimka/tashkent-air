@@ -1,0 +1,175 @@
+{
+  "test1_placebo_wind": {
+    "Fergana": {
+      "observed": 2.86984386187318,
+      "null_mean": -0.006707505495276697,
+      "null_sd": 0.6593591402711158,
+      "emp_p": 0.0,
+      "pass": true
+    },
+    "Almaty": {
+      "observed": 4.673225003723598,
+      "null_mean": -0.0453026508480989,
+      "null_sd": 0.7288218157201233,
+      "emp_p": 0.0,
+      "pass": true
+    },
+    "Bishkek": {
+      "observed": 2.2022576645181986,
+      "null_mean": -0.011087804366233613,
+      "null_sd": 0.5572365079893209,
+      "emp_p": 0.0,
+      "pass": true
+    },
+    "Samarkand": {
+      "observed": -2.121031913670148,
+      "null_mean": -0.0041920357433284546,
+      "null_sd": 0.6034447878010276,
+      "emp_p": 0.0,
+      "pass": true
+    },
+    "Ashgabat": {
+      "observed": -2.881811718511779,
+      "null_mean": -0.014311823285368635,
+      "null_sd": 0.5894435002006283,
+      "emp_p": 0.0,
+      "pass": true
+    }
+  },
+  "test2_bearing_sweep": {
+    "Fergana": {
+      "true_bearing": 90,
+      "peak_bearing": 60,
+      "angular_err": 30,
+      "pass": true
+    },
+    "Almaty": {
+      "true_bearing": 45,
+      "peak_bearing": 50,
+      "angular_err": 5,
+      "pass": true
+    },
+    "Bishkek": {
+      "true_bearing": 50,
+      "peak_bearing": 50,
+      "angular_err": 0,
+      "pass": true
+    },
+    "Samarkand": {
+      "true_bearing": 225,
+      "peak_bearing": 90,
+      "angular_err": 135,
+      "pass": false
+    },
+    "Ashgabat": {
+      "true_bearing": 240,
+      "peak_bearing": 90,
+      "angular_err": 150,
+      "pass": false
+    }
+  },
+  "test3_dose_response": {
+    "Fergana": {
+      "low_wind": 3.706517772837053,
+      "high_wind": 1.201879877551469,
+      "pass": false
+    },
+    "Almaty": {
+      "low_wind": 5.157272585448011,
+      "high_wind": 1.417400206567888,
+      "pass": false
+    },
+    "Bishkek": {
+      "low_wind": 2.541918454519772,
+      "high_wind": 0.5015456542512136,
+      "pass": false
+    }
+  },
+  "test4_matched_pairs": {
+    "mean_pm_difference_shallow_minus_deep": 3.406250899610578,
+    "wilcoxon_p": 0.00041961669921875,
+    "n_bins": 19,
+    "pass": true
+  },
+  "test5_bootstrap": {
+    "transport_beta_Fergana": {
+      "ci95": [
+        0.827979325241909,
+        4.820734519264538
+      ],
+      "excludes_0": true
+    },
+    "transport_beta_Almaty": {
+      "ci95": [
+        1.9223658930363023,
+        7.126961529322636
+      ],
+      "excludes_0": true
+    },
+    "transport_beta_Bishkek": {
+      "ci95": [
+        0.736203160893849,
+        3.5754248164038835
+      ],
+      "excludes_0": true
+    },
+    "transport_beta_Samarkand": {
+      "ci95": [
+        -3.7604554441198204,
+        -0.1485045032868809
+      ],
+      "excludes_0": true
+    },
+    "transport_beta_Ashgabat": {
+      "ci95": [
+        -5.001479997054722,
+        -0.7758077979347029
+      ],
+      "excludes_0": true
+    },
+    "temp_raw_linear": {
+      "ci95": [
+        -6.604738563410461,
+        -4.651063885472703
+      ],
+      "includes_0": false
+    },
+    "temp_ventilation_controlled_linear": {
+      "ci95": [
+        -0.8305715956919775,
+        0.630107775692639
+      ],
+      "includes_0": true
+    }
+  },
+  "test6_per_winter": {
+    "winters": {
+      "2022-2023": {
+        "ene_transport_beta": 5.49416351416161,
+        "temp_raw_lin": -11.214085054393706,
+        "temp_ctrl_lin": -2.7133128362877956,
+        "n": 151
+      },
+      "2023-2024": {
+        "ene_transport_beta": 2.7628189253345137,
+        "temp_raw_lin": -1.5428874036195839,
+        "temp_ctrl_lin": -1.2696337324435603,
+        "n": 152
+      },
+      "2024-2025": {
+        "ene_transport_beta": 2.493825156263199,
+        "temp_raw_lin": -3.8030464598579843,
+        "temp_ctrl_lin": -0.8423881159857504,
+        "n": 151
+      },
+      "2025-2026": {
+        "ene_transport_beta": 2.6618557388040287,
+        "temp_raw_lin": -3.245174790319853,
+        "temp_ctrl_lin": -0.5620493668992547,
+        "n": 151
+      }
+    },
+    "ene_positive_all": true,
+    "cold_shrinks_all": true
+  }
+}

@@ -1,0 +1,29 @@
+group,claim,paper,recomputed,status,source
+Data,daily records in study window,1419,1419.0,PASS,data/processed/daily_merged.csv
+Data,real-sensor PM2.5 obs (in window),767,767.0,PASS,openaq_embassy_pm25_daily.csv ∩ window
+Data,real-sensor PM2.5 mean (µg/m³),40.4,40.353,PASS,descriptive_stats.py
+Data,real-sensor PM2.5 max (µg/m³),289,289.0,PASS,descriptive_stats.py
+Data,BLH days model-imputed (flagged),183,183.0,PASS,impute_blh.py
+CAMS bias,CAMS under-scale factor (≈2×),1.95,1.95,PASS,ground_truth_model_metrics.json
+CAMS bias,raw CAMS R² (worse than the mean),-0.16,-0.157,PASS,ground_truth_model_metrics.json
+CAMS bias,raw CAMS bad-day recall (misses ~83%),0.165,0.165,PASS,ground_truth_model_metrics.json
+GT model,deployable R² (real sensor),0.42,0.421,PASS,ground_truth_model_metrics.json
+GT model,R² with yesterday's live reading,0.52,0.518,PASS,ground_truth_model_metrics.json
+GT model,bad-day precision @35,0.78,0.782,PASS,ground_truth_model_metrics.json
+GT model,bad-day recall @35,0.79,0.789,PASS,ground_truth_model_metrics.json
+GT model,deployable MAE (µg/m³),16.8,16.762,PASS,ground_truth_model_metrics.json
+GT model,persistence baseline R²,0.4,0.396,PASS,ground_truth_model_metrics.json
+Warning,episode ROC-AUC @35,0.873,0.873,PASS,episode_classifier_metrics.json
+Warning,episode PR-AUC (AP) @35,0.849,0.849,PASS,improvements.json
+Warning,episode ROC-AUC @55,0.856,0.856,PASS,episode_classifier_metrics.json
+Warning,cross-winter recall (0.86±0.08),0.86,0.86,PASS,improvements.json (LOWO-CV)
+Warning,cross-winter precision (0.80±0.04),0.8,0.8,PASS,improvements.json (LOWO-CV)
+Tracers,SO₂ ↔ ground PM2.5  (r),0.71,0.709,PASS,cams_so2 vs embassy
+Tracers,NO₂ ↔ ground PM2.5  (r),0.6,0.605,PASS,daily_merged vs embassy
+Tracers,SO₂ on warm days >20 °C (µg/m³),3.6,3.576,PASS,cams_so2 × temp (all days)
+Tracers,SO₂ on deep-cold days <−5 °C (µg/m³),12.6,12.644,PASS,cams_so2 × temp (all days)
+Tracers,SO₂ winter÷summer (ground days),3.0,3.021,PASS,mazut_hypothesis.py [5]
+Tracers,"SO₂ enrichment, worst-10% ÷ low PM days",3.3,3.263,PASS,mazut_hypothesis.py [2]
+Satellite,TROPOMI ↔ CAMS SO₂ monthly (r),0.59,0.592,PASS,tropomi_cams_monthly.csv
+Satellite,TROPOMI SO₂ winter÷summer,5.16,5.16,PASS,tropomi_cams_monthly.csv
+Satellite,CAMS SO₂ winter÷summer,2.42,2.421,PASS,tropomi_cams_monthly.csv

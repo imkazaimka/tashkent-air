@@ -1,0 +1,9 @@
+[Unit]
+Description=Run the Tashkent air alert daily (03:00 UTC = 08:00 Tashkent)
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

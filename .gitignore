@@ -1,0 +1,48 @@
+# Secrets — never commit
+.env
+
+# Data artifacts
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Models
+*.pkl
+*.joblib
+*.txt.model
+lightgbm_*.txt
+
+# OS / build junk
+.DS_Store
+# generated HTML + PDF (rebuild from .md via build_paper.sh / build_paper_ru.sh)
+Tashkent-PM25-ML-Study.html
+Tashkent-PM25-ML-Study-RU.html
+Tashkent-PM25-ML-Study.pdf
+Tashkent-PM25-ML-Study-RU.pdf
+
+# Telegram bot — subscriber chat IDs are personal data
+data/telegram_subscribers.json
+data/telegram_alert_state.json
+
+# Report sources, report-writing pipeline, and submission material
+# (kept locally; the public repo is model + data + code only)
+Tashkent-PM25-ML-Study.md
+Tashkent-PM25-ML-Study-RU.md
+build_paper.sh
+build_paper_ru.sh
+template.html
+template_ru.html
+paper.css
+paper_ru.css
+make_ru_figures.py
+figures_ru/
+submission/
+arxiv/

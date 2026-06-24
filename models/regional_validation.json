@@ -1,0 +1,111 @@
+{
+  "n_stations": 9,
+  "n_cities": 5,
+  "total_paired_days": 6895,
+  "ratio_min": 1.2089117534321212,
+  "ratio_max": 4.515694099752559,
+  "ratio_median": 2.394329451894204,
+  "all_underestimate": true,
+  "median_recall35": 0.011363636363636364,
+  "stations": [
+    {
+      "city": "Tashkent",
+      "station": "US Embassy",
+      "type": "reference",
+      "n": 767,
+      "cams_mean": 18.760739895697522,
+      "obs_mean": 40.35349413298565,
+      "ratio": 2.150954299102035,
+      "r": 0.5735768511946094,
+      "recall35": 0.18596491228070175
+    },
+    {
+      "city": "Tashkent",
+      "station": "Sputnik-4",
+      "type": "low-cost",
+      "n": 142,
+      "cams_mean": 21.1824823943662,
+      "obs_mean": 61.552323943661975,
+      "ratio": 2.905812585971167,
+      "r": 0.7825831310039647,
+      "recall35": 0.20430107526881722
+    },
+    {
+      "city": "Almaty",
+      "station": "Almaty ref.",
+      "type": "reference",
+      "n": 1095,
+      "cams_mean": 22.097952815829526,
+      "obs_mean": 26.71447488584475,
+      "ratio": 1.2089117534321212,
+      "r": 0.6251174660415091,
+      "recall35": 0.4088888888888889
+    },
+    {
+      "city": "Bishkek",
+      "station": "US Embassy",
+      "type": "reference",
+      "n": 723,
+      "cams_mean": 10.521489711484799,
+      "obs_mean": 25.50384785615491,
+      "ratio": 2.423976884976281,
+      "r": 0.1986724632580252,
+      "recall35": 0.0
+    },
+    {
+      "city": "Bishkek",
+      "station": "Bishkek ref.",
+      "type": "reference",
+      "n": 873,
+      "cams_mean": 10.389274984425553,
+      "obs_mean": 24.8753470790378,
+      "ratio": 2.394329451894204,
+      "r": 0.1883410670709631,
+      "recall35": 0.0
+    },
+    {
+      "city": "Dushanbe",
+      "station": "Dushanbe",
+      "type": "reference",
+      "n": 1252,
+      "cams_mean": 13.81643668376212,
+      "obs_mean": 58.25014376996805,
+      "ratio": 4.2160033808447155,
+      "r": 0.2569799455135753,
+      "recall35": 0.011363636363636364
+    },
+    {
+      "city": "Dushanbe",
+      "station": "US Embassy",
+      "type": "reference",
+      "n": 705,
+      "cams_mean": 12.66101001617519,
+      "obs_mean": 57.173248226950356,
+      "ratio": 4.515694099752559,
+      "r": 0.30148623764172355,
+      "recall35": 0.01278772378516624
+    },
+    {
+      "city": "Ashgabat",
+      "station": "US Embassy",
+      "type": "reference",
+      "n": 615,
+      "cams_mean": 12.874392383397517,
+      "obs_mean": 25.309951219512197,
+      "ratio": 1.965914232360298,
+      "r": 0.19283639127705204,
+      "recall35": 0.008771929824561403
+    },
+    {
+      "city": "Ashgabat",
+      "station": "Ashgabat ref.",
+      "type": "reference",
+      "n": 723,
+      "cams_mean": 12.713786974351509,
+      "obs_mean": 25.19856154910097,
+      "ratio": 1.9819870822073664,
+      "r": 0.18815346485920748,
+      "recall35": 0.007352941176470588
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Tashkent air-quality — pick up new bot subscribers
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=YOURUSER
+WorkingDirectory=/home/YOURUSER/TashkentAir
+ExecStart=/home/YOURUSER/TashkentAir/.venv/bin/python src/telegram_alert.py --sync
