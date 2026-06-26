@@ -23,10 +23,14 @@ memorised Central-Asian map.
 We are equally explicit about what it is **not**. Multimodal fusion adds **nothing** over AOD-alone for
 dust (a clean null result). A 7-day rollout against a climatology baseline shows most of the apparent
 skill *is* climatology; genuine forecast skill above climatology is modest and decays to ≈0 by day 3 in
-the harder regions. Nothing here is methodologically novel, and operational systems (CAMS, Aurora) with
-3-D physics and data assimilation forecast dust better. The contribution is therefore not a new method
-but a **characterised, transferable, laptop-scale** model and a deployed open dust-watch — together with
-a measurement of exactly where its skill begins and ends.
+the harder regions. The per-region transfer is statistically significant (bootstrap 95% CIs exclude
+zero). Benchmarked head-to-head against **CAMS** — ECMWF's operational assimilating aerosol model — on
+out-of-sample days, the 3.9 MB ConvLSTM is **competitive on raw pattern correlation** (0.43 vs 0.30,
+helped by sharing MAIAC's product and finer resolution) while **CAMS keeps the edge on true transport
+skill** (anomaly correlation 0.18 vs 0.17); both far exceed persistence. Nothing here is methodologically
+novel. The contribution is therefore not a new method but a **characterised, transferable, laptop-scale**
+model — shown to sit in the same league as an operational system — and a deployed open dust-watch,
+together with a measurement of exactly where its skill begins and ends.
 
 ---
 
@@ -214,7 +218,63 @@ of how a dust field advects and decays. That is the one genuinely re-usable thin
 
 ---
 
-## 6. The deployed system
+## 6. Benchmarking against CAMS, and statistical proofs
+
+Two questions a sceptic asks: *is the generalisation real or just noise?* and *how does this compare to a
+system people actually use?* We answer both directly.
+
+### 6.1 The generalisation gap is statistically significant
+Recomputing §5 **per day** (not pooled) and bootstrapping the ConvLSTM-minus-persistence pattern
+correlation (10,000 resamples) gives a 95% confidence interval that **excludes zero in every region** —
+the win is real, not sampling luck:
+
+| Region | +1d gap (ConvLSTM − persistence) | bootstrap 95% CI |
+|---|---|---|
+| **Iran** | +0.139 | [+0.122, +0.157] |
+| **Sahara / Sahel** | +0.242 | [+0.213, +0.271] |
+| **Middle East** | +0.141 | [+0.119, +0.165] |
+| **Gobi (Mongolia)** | +0.153 | [+0.096, +0.209] |
+
+![Significance of the generalisation gap](https://raw.githubusercontent.com/imkazaimka/tashkent-air/main/figures/paper2_significance.png)
+
+The gain is also not a small-dust artefact: the model leads persistence at *every* dust intensity, by the
+widest margin on the **hardest, light/transient-dust days** where persistence collapses (r 0.25) and the
+model holds (0.44):
+
+![Skill by dust intensity](https://raw.githubusercontent.com/imkazaimka/tashkent-air/main/figures/paper2_intensity.png)
+
+### 6.2 Against CAMS — the operational gold standard
+We benchmarked against **CAMS** (ECMWF's operational global aerosol model — 3-D physics with satellite
+data assimilation) on a Central-Asia window the model **never trained on** (2024 spring dust, 92 days). We
+pulled CAMS's own AOD *forecasts* at +1/+2/+3 days (initialised at T−L, valid at T near the MODIS
+overpass) and scored every method against the same MAIAC truth, same metric.
+
+![ConvLSTM vs CAMS benchmark](https://raw.githubusercontent.com/imkazaimka/tashkent-air/main/figures/paper2_cams_benchmark.png)
+
+![Truth vs model vs CAMS, dustiest day](https://raw.githubusercontent.com/imkazaimka/tashkent-air/main/figures/paper2_cams_maps.png)
+
+The result has two honest halves, and the second matters as much as the first:
+
+- **Raw pattern correlation:** our compact ConvLSTM scores *higher* than CAMS (**0.43 vs 0.30** at +1d)
+  and holds it flat across leads. This is **not** a claim of better dust physics. Our model was trained on
+  the very MAIAC product it is scored against, and resolves it at 20 km; CAMS is a coarser (~40 km),
+  physically independent system not tuned to MAIAC. Much of the edge is "speaking the verification
+  product's dialect," and the flat-across-leads r is partly reversion to a climatological pattern (§4.3).
+- **Anomaly correlation (transport skill, climatology removed):** **CAMS keeps the edge it should** —
+  **0.18 vs our 0.17** at +1d, ahead at every lead. Once you strip the seasonal climatology (where our
+  look-alike advantage lives), CAMS's assimilated 3-D physics genuinely tracks the day's transport
+  marginally better. Both crush persistence (0.09) and naive wind-advection (0.01, tested and omitted as a
+  strawman).
+
+**The honest headline:** a 3.9 MB laptop ConvLSTM lands *in the same league as CAMS* for short-range dust
+pattern skill — striking for a model with no physics and no assimilation — but CAMS retains the true
+transport edge, and unlike our model it also predicts absolute concentration, vertical structure and
+chemistry. This benchmark is a **sanity check that the model is competitive, not a leaderboard win over
+CAMS.**
+
+---
+
+## 7. The deployed system
 
 The trained network is wired into a small live dust-watch (the only place it runs in production):
 
@@ -239,25 +299,28 @@ those approaching Tashkent flagged) on the true-colour basemap:
 
 ---
 
-## 7. What the model is genuinely good at
+## 8. What the model is genuinely good at
 
 1. **Transferable next-day dust structure.** One model, never retrained, beats persistence on the dust
    field across **Iran, the Sahara, the Middle East and the Gobi** — three continents — by **+0.12 to
    +0.23 r at +1 day**. The learned dynamics are universal, not Tashkent-specific.
 2. **Reading dust *direction*.** With climatology removed it still tracks where existing dust is heading
    (ACC ≈ 2× persistence at +1 day). Direction is the reliable output.
-3. **A complete, honest, laptop-scale pipeline.** NRT satellite pull → classical tracking → ConvLSTM
+3. **Punching at operational weight.** Head-to-head with CAMS on out-of-sample days (§6.2), a 3.9 MB
+   physics-free model is *competitive on dust pattern skill* (CAMS keeps only a slim transport-skill
+   edge). For awareness on a laptop, that is a genuinely useful place to be.
+4. **A complete, honest, laptop-scale pipeline.** NRT satellite pull → classical tracking → ConvLSTM
    forecast → self-updating dashboard, end-to-end on an 8 GB M2, for a region that had no such open tool.
-4. **Knowing its own ceiling, measurably.** The fusion null (§4.2), the climatology rollout (§4.3) and
-   the per-region ACC breakdown (§5) are *tests*, not assertions — every boundary is quantified and
-   reproducible from source.
+5. **Knowing its own ceiling, measurably.** The fusion null (§4.2), the climatology rollout (§4.3), the
+   significance test (§6.1) and the CAMS benchmark (§6.2) are *tests*, not assertions — every boundary is
+   quantified and reproducible from source.
 
 **One sentence:** it is a small, transferable model that honestly answers *"is there dust, where, and
 which way is it drifting over the next day or two"* on a laptop — and is candid that it cannot do more.
 
 ---
 
-## 8. Limitations (stated plainly)
+## 9. Limitations (stated plainly)
 
 - **Multimodal fusion is a null** for dust — AOD alone is as good (§4.2).
 - **Climatology-limited** — genuine skill above the seasonal mean is modest and decays to ≈0 by day 3 in
@@ -268,13 +331,16 @@ which way is it drifting over the next day or two"* on a laptop — and is candi
   instrument sees dust in the dark or through thick cloud); unusable for fast haboobs.
 - **Cannot see surface PM2.5** — column AOD ≈ uncorrelated with winter surface PM2.5 (r ≈ 0); the
   dangerous-days problem is Paper 1's ground model, not this one.
-- **Not novel, not operational-grade** — ConvLSTM, advection-aware rollout, CV tracking and gap-fill are
-  all established; CAMS and Aurora forecast regional dust better with 3-D physics + assimilation. The
+- **Competitive ≠ better than CAMS** — our higher *raw* correlation vs CAMS (§6.2) is inflated by training
+  on and resolving the exact MAIAC verification product; on the climatology-free transport metric (ACC)
+  CAMS is ahead at every lead, and CAMS additionally delivers absolute concentration, vertical profile and
+  chemistry we cannot. We are *in CAMS's league on one metric*, not beating it.
+- **Not novel** — ConvLSTM, advection-aware rollout, CV tracking and gap-fill are all established; the
   contribution is the *characterised, transferable, open, local* system, not a new method.
 
 ---
 
-## 9. Reproducibility & where the images are
+## 10. Reproducibility & where the images are
 
 **Repository:** https://github.com/imkazaimka/tashkent-air
 **All figures (browse):** https://github.com/imkazaimka/tashkent-air/tree/main/figures
@@ -294,6 +360,11 @@ python src/convlstm_multimodal.py    # Fig. convlstm_multimodal  (the fusion nul
 python src/test_7day.py              # Fig. test_7day            (the climatology ceiling)
 python src/test_transport.py         # Fig. test_transport / forecast_rgb
 
+# benchmarks & proofs (§6)
+EE_PROJECT=civil-sentry-379101 python src/pull_cams.py   # CAMS forecasts, Central Asia 2024
+python src/benchmark_cams.py         # Fig. paper2_cams_benchmark / paper2_cams_maps  (vs CAMS)
+python src/paper2_proofs.py          # Fig. paper2_significance / paper2_intensity     (bootstrap CIs)
+
 # the live system
 python src/dust_server.py            # → http://localhost:8000
 ```
@@ -310,10 +381,14 @@ python src/dust_server.py            # → http://localhost:8000
 | 7 | **`paper2_generalization.png`** | **one model beats persistence on every region** |
 | 8 | **`paper2_regions_maps.png`** | **truth vs forecast across four regions** |
 | 9 | `dust_test_iran.png` | Iran transfer, in detail |
-| 10 | `dust_map_asia_rgb.png` | wide-domain live dust tracking (classical CV layer) |
-| 11 | `forecast_rgb.png` / `forecast_live.png` | live 1–3 day forecast |
-| 12 | `dust_map_watch_rgb.png` | live dust map |
-| 13 | `dust_anim.gif` | animated nowcast with direction arrow |
+| 10 | **`paper2_significance.png`** | **bootstrap 95% CIs — the generalisation gap is significant** |
+| 11 | `paper2_intensity.png` | skill stratified by dust intensity |
+| 12 | **`paper2_cams_benchmark.png`** | **ConvLSTM vs CAMS vs persistence (r and ACC)** |
+| 13 | **`paper2_cams_maps.png`** | **truth vs our model vs CAMS, dustiest day** |
+| 14 | `dust_map_asia_rgb.png` | wide-domain live dust tracking (classical CV layer) |
+| 15 | `forecast_rgb.png` / `forecast_live.png` | live 1–3 day forecast |
+| 16 | `dust_map_watch_rgb.png` | live dust map |
+| 17 | `dust_anim.gif` | animated nowcast with direction arrow |
 
 *Data note: raw satellite arrays and any ground data are regenerated by the scripts and not committed;
 WAQI ground data are used under their Data-Use Statement and not redistributed.*

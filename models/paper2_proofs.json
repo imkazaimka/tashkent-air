@@ -1,0 +1,50 @@
+{
+  "iran": {
+    "name": "Iran",
+    "n": 86,
+    "model_r": 0.634,
+    "persist_r": 0.495,
+    "gap": 0.139,
+    "ci95": [
+      0.122,
+      0.157
+    ],
+    "significant": true
+  },
+  "sahara": {
+    "name": "Sahara/Sahel",
+    "n": 41,
+    "model_r": 0.518,
+    "persist_r": 0.276,
+    "gap": 0.242,
+    "ci95": [
+      0.213,
+      0.271
+    ],
+    "significant": true
+  },
+  "middleeast": {
+    "name": "Middle East",
+    "n": 41,
+    "model_r": 0.725,
+    "persist_r": 0.584,
+    "gap": 0.141,
+    "ci95": [
+      0.119,
+      0.165
+    ],
+    "significant": true
+  },
+  "gobi": {
+    "name": "Gobi (Mongolia)",
+    "n": 41,
+    "model_r": 0.307,
+    "persist_r": 0.154,
+    "gap": 0.153,
+    "ci95": [
+      0.096,
+      0.209
+    ],
+    "significant": true
+  }
+}
