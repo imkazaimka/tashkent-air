@@ -1,0 +1,9 @@
+{
+  "n_days": 52,
+  "n_smog": 26,
+  "aod_pm_corr": -0.043,
+  "source_mix": {
+    "Transport (regional)": 18,
+    "Local (combustion)": 8
+  }
+}

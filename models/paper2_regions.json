@@ -1,0 +1,90 @@
+{
+  "iran": {
+    "name": "Iran",
+    "n": 86,
+    "+1d": {
+      "model_r": 0.69,
+      "persist_r": 0.55,
+      "model_acc": 0.5,
+      "persist_acc": 0.42
+    },
+    "+2d": {
+      "model_r": 0.59,
+      "persist_r": 0.46,
+      "model_acc": 0.34,
+      "persist_acc": 0.32
+    },
+    "+3d": {
+      "model_r": 0.52,
+      "persist_r": 0.39,
+      "model_acc": 0.25,
+      "persist_acc": 0.23
+    }
+  },
+  "sahara": {
+    "name": "Sahara/Sahel",
+    "n": 41,
+    "+1d": {
+      "model_r": 0.53,
+      "persist_r": 0.3,
+      "model_acc": 0.19,
+      "persist_acc": 0.12
+    },
+    "+2d": {
+      "model_r": 0.51,
+      "persist_r": 0.26,
+      "model_acc": 0.15,
+      "persist_acc": 0.07
+    },
+    "+3d": {
+      "model_r": 0.43,
+      "persist_r": 0.21,
+      "model_acc": 0.07,
+      "persist_acc": 0.02
+    }
+  },
+  "middleeast": {
+    "name": "Middle East",
+    "n": 41,
+    "+1d": {
+      "model_r": 0.73,
+      "persist_r": 0.59,
+      "model_acc": 0.29,
+      "persist_acc": 0.28
+    },
+    "+2d": {
+      "model_r": 0.66,
+      "persist_r": 0.52,
+      "model_acc": 0.15,
+      "persist_acc": 0.17
+    },
+    "+3d": {
+      "model_r": 0.59,
+      "persist_r": 0.47,
+      "model_acc": 0.08,
+      "persist_acc": 0.09
+    }
+  },
+  "gobi": {
+    "name": "Gobi (Mongolia)",
+    "n": 41,
+    "+1d": {
+      "model_r": 0.34,
+      "persist_r": 0.19,
+      "model_acc": 0.17,
+      "persist_acc": 0.08
+    },
+    "+2d": {
+      "model_r": 0.27,
+      "persist_r": 0.22,
+      "model_acc": 0.1,
+      "persist_acc": 0.12
+    },
+    "+3d": {
+      "model_r": 0.2,
+      "persist_r": 0.15,
+      "model_acc": 0.03,
+      "persist_acc": 0.04
+    }
+  }
+}

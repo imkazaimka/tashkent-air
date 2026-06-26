@@ -1,0 +1,51 @@
+{
+  "n": 690,
+  "stagnation_mult": 1.7,
+  "box": {
+    "r": 0.87,
+    "mae": 7.5,
+    "recall": 0.62,
+    "precision": 0.75,
+    "f1": 0.68
+  },
+  "persistence": {
+    "r": 0.87,
+    "mae": 7.3,
+    "recall": 0.72,
+    "precision": 0.72,
+    "f1": 0.72
+  },
+  "climatology": {
+    "r": 0.25,
+    "mae": 13.5,
+    "recall": 0.33,
+    "precision": 0.35,
+    "f1": 0.34
+  },
+  "horizon": {
+    "1": {
+      "box_r": 0.87,
+      "persist_r": 0.87,
+      "box_recall": 0.62,
+      "persist_recall": 0.72
+    },
+    "2": {
+      "box_r": 0.77,
+      "persist_r": 0.74,
+      "box_recall": 0.54,
+      "persist_recall": 0.67
+    },
+    "3": {
+      "box_r": 0.73,
+      "persist_r": 0.67,
+      "box_recall": 0.49,
+      "persist_recall": 0.64
+    }
+  },
+  "params": {
+    "vent_k": 0.107,
+    "dep": 0.275,
+    "washout": 0.0149,
+    "Q_emis": 5.69
+  }
+}

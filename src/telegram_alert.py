@@ -130,9 +130,30 @@ def weekday(datestr):
     import datetime
     return datetime.date.fromisoformat(datestr).strftime("%a %d %b")
 
+CAUSE_RU = {"Mazut/coal heating": "мазут/уголь (отопление)", "Dust storm": "пыльная буря",
+            "Traffic": "транспорт", "Imported (transport)": "перенос из других регионов"}
+
+def cause_lines(worst):
+    """Diagnose the dominant cause of the worst day (if its tracers are in the row) → (EN, RU) lines."""
+    need = ("cams_so2", "carbon_monoxide", "nitrogen_dioxide", "dust", "pm10", "pm2_5",
+            "temperature_2m", "wind_speed_10m", "boundary_layer_height", "wind_direction_10m",
+            "fergana_pm25", "almaty_pm25", "bishkek_pm25")
+    if not all(k in worst for k in need):
+        return "", ""
+    try:
+        from diagnose_cause import Diagnoser
+        d = Diagnoser().diagnose(worst)
+        te = " (trapped by still air)" if d["trapped_air"] else ""
+        tr = " (застой воздуха)" if d["trapped_air"] else ""
+        return (f"🔎 Likely cause: <b>{d['cause']}</b>{te}\n",
+                f"🔎 Вероятная причина: <b>{CAUSE_RU.get(d['cause'], d['cause'])}</b>{tr}\n")
+    except Exception:
+        return "", ""
+
 def alert_text(tier, worst, rows):
     head = "🚨 <b>SEVERE air-quality warning — Tashkent</b>" if tier == 2 else \
            "⚠️ <b>Air-quality warning — Tashkent</b>"
+    cause_en, cause_ru = cause_lines(worst)
     advice_en = ("Stay indoors, keep windows closed, use a mask/purifier if you go out."
                  if tier == 2 else
                  "Limit time outdoors; sensitive groups (children, elderly, asthma) stay in.")
@@ -146,9 +167,11 @@ def alert_text(tier, worst, rows):
         f"📅 <b>{weekday(worst['date'])}</b>: PM2.5 ≈ <b>{int(worst['pm25'])} µg/m³</b> ({worst['level']})\n"
         f"Chance air is BAD (&gt;40): <b>{int(worst['p_bad']*100)}%</b> · "
         f"VERY BAD (&gt;100): <b>{int(worst['p_vbad']*100)}%</b>\n"
+        f"{cause_en}"
         f"➡️ {advice_en}\n\n"
         f"🚨 <b>Опасный уровень воздуха — Ташкент</b>\n"
         f"📅 <b>{weekday(worst['date'])}</b>: PM2.5 ≈ <b>{int(worst['pm25'])} мкг/м³</b>\n"
+        f"{cause_ru}"
         f"➡️ {advice_ru}\n\n"
         f"<i>7-day PM2.5: {strip}</i>"
     )

@@ -1,0 +1,16 @@
+{
+  "uvai_dust_r": -0.07,
+  "uvai_coarse_r": 0.09,
+  "coverage": {
+    "TROPOMI UVAI": 0.998,
+    "TROPOMI CO": 0.935,
+    "TROPOMI NO\u2082": 0.745,
+    "Optical AOD": 0.244
+  },
+  "source_mix": {
+    "Anthropogenic (winter)": 431,
+    "Dust (regional)": 214,
+    "Mixed/other": 203
+  },
+  "n_smog": 848
+}

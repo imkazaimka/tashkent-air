@@ -1,0 +1,30 @@
+{
+  "lowo_auc": 0.843,
+  "lowo_prauc": 0.83,
+  "default_catch": 0.72,
+  "op_recall": 0.91,
+  "op_falsealarm": 0.45,
+  "op_precision": 0.66,
+  "bakeoff": {
+    "Linear (Ridge)": [
+      0.699,
+      0.957
+    ],
+    "Neural net (MLP)": [
+      0.624,
+      0.931
+    ],
+    "Random forest": [
+      0.686,
+      0.946
+    ],
+    "LightGBM (GBT)": [
+      0.673,
+      0.941
+    ],
+    "Ensemble (RF+GBT+MLP)": [
+      0.684,
+      0.943
+    ]
+  }
+}
